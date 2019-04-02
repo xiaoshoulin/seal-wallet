@@ -1,0 +1,30 @@
+resolver: ./seal.yaml
+packages:
+- .
+- ../seal/acid-state-exts
+- ../seal/binary
+- ../seal/binary/test
+- ../seal/chain
+- ../seal/chain/test
+- ../seal/client
+- ../seal/cluster
+- ../seal/core
+- ../seal/core/test
+- ../seal/crypto
+- ../seal/crypto/test
+- ../seal/db
+- ../seal/infra
+- ../seal/lib
+- ../seal/mnemonic
+- ../seal/networking
+- ../seal/node
+- ../seal/node-ipc
+- ../seal/util
+- ../seal/util/test
+- ../seal/utxo
+- ../seal/x509
+- ../seal/db/test/
+- ../seal/infra/test/
+
+extra-deps:
+- generic-lens-1.1.0.0

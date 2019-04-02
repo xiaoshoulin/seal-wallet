@@ -1,0 +1,641 @@
+name:                seal-wallet
+version:             1.0.0
+synopsis:            The Wallet Backend for a Cardano node.
+description:         Please see README.md
+homepage:            http://114.55.30.96:7990/projects/SEAL2_0/repos/seal-wallet-fix
+author:              IOHK Engineering Team
+maintainer:          operations@iohk.io
+copyright:           2018 IOHK
+license:             MIT
+license-file:        LICENSE
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  default-language:
+      Haskell2010
+  default-extensions:
+      DataKinds
+      DefaultSignatures
+      FlexibleContexts
+      FlexibleInstances
+      MonadFailDesugaring
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      OverloadedStrings
+      RecordWildCards
+      ScopedTypeVariables
+      TemplateHaskell
+      TupleSections
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      UndecidableInstances
+  ghc-options:
+      -Wall
+      -Werror
+      -Wcompat
+      -fwarn-redundant-constraints
+
+  build-depends:
+      base
+    , acid-state
+    , aeson
+    , aeson-options
+    , aeson-pretty
+    , ansi-wl-pprint
+    , async
+    , base58-bytestring
+    , beam-core
+    , beam-migrate
+    , beam-sqlite
+    , bifunctors
+    , binary
+    , bytestring
+    , canonical-json
+    , cardano-crypto
+    , cereal
+    , clock
+    , conduit
+    , containers
+    , constraints
+    , cryptonite
+    , data-default
+    , data-default-class
+    , directory
+    , exceptions
+    , filepath
+    , foldl
+    , formatting
+    , generics-sop
+    , generic-arbitrary
+    , http-api-data
+    , http-client
+    , http-types
+    , ixset-typed
+    , lens
+    , memory
+    , mtl
+    , mwc-random
+    , neat-interpolation == 0.3.2.1
+    , network-transport
+    , optparse-applicative
+    , QuickCheck
+    , quickcheck-instances
+    , reflection
+    , resourcet
+    , retry
+    , safecopy
+    , safe-exceptions
+    , seal-crypto
+    , seal-crypto-test
+    , seal 
+    , seal-binary
+    , seal-chain
+    , seal-client
+    , seal-core
+    , seal-core-test
+    , seal-crypto
+    , seal-crypto-base
+    , seal-db
+    , seal-infra
+    , seal-mnemonic
+    , seal-networking
+    , seal-node
+    , seal-node-ipc
+    , seal-util
+    , seal-utxo
+    , serokell-util
+    , servant
+    , servant-client
+    , servant-client-core
+    , servant-server
+    , servant-swagger
+    , servant-swagger-ui
+    , servant-swagger-ui-core
+    , servant-swagger-ui-redoc
+    , sqlite-simple
+    , sqlite-simple-errors
+    , stm
+    , stm-chans
+    , strict
+    , strict-concurrency
+    , swagger2
+    , tar
+    , text
+    , time
+    , time-units
+    , transformers
+    , universum
+    , unliftio
+    , unliftio-core
+    , unordered-containers
+    , uuid
+    , vector
+    , wai
+    , wai-middleware-throttle
+    , warp
+    , zlib
+
+  hs-source-dirs:
+      src
+  exposed-modules:
+      Seal.Wallet.API
+      Seal.Wallet.API.Indices
+      Seal.Wallet.API.Internal
+      Seal.Wallet.API.Internal.Handlers
+      Seal.Wallet.API.Node.Client
+      Seal.Wallet.API.Request
+      Seal.Wallet.API.Request.Filter
+      Seal.Wallet.API.Request.Pagination
+      Seal.Wallet.API.Request.Parameters
+      Seal.Wallet.API.Request.Sort
+      Seal.Wallet.API.Response
+      Seal.Wallet.API.Response.Filter.IxSet
+      Seal.Wallet.API.Response.JSend
+      Seal.Wallet.API.Response.Sort.IxSet
+      Seal.Wallet.API.Types
+      Seal.Wallet.API.Types.UnitOfMeasure
+      Seal.Wallet.API.Util.Example
+      Seal.Wallet.API.Util.Pagination
+      Seal.Wallet.API.Util.Servant
+      Seal.Wallet.API.V1
+      Seal.Wallet.API.V1.Accounts
+      Seal.Wallet.API.V1.Addresses
+      Seal.Wallet.API.V1.Errors
+      Seal.Wallet.API.V1.Generic
+      Seal.Wallet.API.V1.Handlers
+      Seal.Wallet.API.V1.Handlers.Accounts
+      Seal.Wallet.API.V1.Handlers.Addresses
+    --   Seal.Wallet.API.V1.Handlers.Info
+      Seal.Wallet.API.V1.Handlers.Settings
+      Seal.Wallet.API.V1.Handlers.Transactions
+      Seal.Wallet.API.V1.Handlers.Wallets
+      Seal.Wallet.API.V1.Headers
+      Seal.Wallet.API.V1.Info
+      Seal.Wallet.API.V1.Parameters
+      Seal.Wallet.API.V1.ReifyWalletError
+      Seal.Wallet.API.V1.Settings
+      Seal.Wallet.API.V1.Swagger
+      Seal.Wallet.API.V1.Swagger.Example
+      Seal.Wallet.API.V1.Transactions
+      Seal.Wallet.API.V1.Types
+      Seal.Wallet.API.V1.Wallets
+      Seal.Wallet.Action
+      Seal.Wallet.Chain.Arbitrary
+      Seal.Wallet.Client
+      Seal.Wallet.Client.Http
+      Seal.Wallet.Core
+      Seal.Wallet.Kernel
+      Seal.Wallet.Kernel.Accounts
+      Seal.Wallet.Kernel.Actions
+      Seal.Wallet.Kernel.AddressPool
+      Seal.Wallet.Kernel.AddressPoolGap
+      Seal.Wallet.Kernel.Addresses
+      Seal.Wallet.Kernel.Ed25519Bip44
+      Seal.Wallet.Kernel.BListener
+      Seal.Wallet.Kernel.CoinSelection
+      Seal.Wallet.Kernel.CoinSelection.FromGeneric
+      Seal.Wallet.Kernel.CoinSelection.Generic
+      Seal.Wallet.Kernel.CoinSelection.Generic.Fees
+      Seal.Wallet.Kernel.CoinSelection.Generic.Grouped
+      Seal.Wallet.Kernel.CoinSelection.Generic.LargestFirst
+      Seal.Wallet.Kernel.CoinSelection.Generic.Random
+      Seal.Wallet.Kernel.DB.AcidState
+      Seal.Wallet.Kernel.DB.BlockContext
+      Seal.Wallet.Kernel.DB.BlockMeta
+      Seal.Wallet.Kernel.DB.Compression
+      Seal.Wallet.Kernel.DB.HdWallet
+      Seal.Wallet.Kernel.DB.HdRootId
+      Seal.Wallet.Kernel.DB.HdWallet.Create
+      Seal.Wallet.Kernel.DB.HdWallet.Delete
+      Seal.Wallet.Kernel.DB.HdWallet.Derivation
+      Seal.Wallet.Kernel.DB.HdWallet.Read
+      Seal.Wallet.Kernel.DB.HdWallet.Update
+      Seal.Wallet.Kernel.DB.InDb
+      Seal.Wallet.Kernel.DB.Read
+      Seal.Wallet.Kernel.DB.Resolved
+      Seal.Wallet.Kernel.DB.Spec
+      Seal.Wallet.Kernel.DB.Spec.Pending
+      Seal.Wallet.Kernel.DB.Spec.Read
+      Seal.Wallet.Kernel.DB.Spec.Update
+      Seal.Wallet.Kernel.DB.Sqlite
+      Seal.Wallet.Kernel.DB.TxMeta
+      Seal.Wallet.Kernel.DB.TxMeta.Types
+      Seal.Wallet.Kernel.DB.Updates
+      Seal.Wallet.Kernel.DB.Util.AcidState
+      Seal.Wallet.Kernel.DB.Util.IxSet
+      Seal.Wallet.Kernel.DB.Util.Zoomable
+      Seal.Wallet.Kernel.Diffusion
+      Seal.Wallet.Kernel.Internal
+      Seal.Wallet.Kernel.Invariants
+      Seal.Wallet.Kernel.Keystore
+      Seal.Wallet.Kernel.Migration
+      Seal.Wallet.Kernel.Mode
+      Seal.Wallet.Kernel.NodeStateAdaptor
+      Seal.Wallet.Kernel.Pending
+      Seal.Wallet.Kernel.Prefiltering
+      Seal.Wallet.Kernel.Read
+      Seal.Wallet.Kernel.Restore
+      Seal.Wallet.Kernel.Submission
+      Seal.Wallet.Kernel.Submission.Worker
+      Seal.Wallet.Kernel.Transactions
+      Seal.Wallet.Kernel.Types
+      Seal.Wallet.Kernel.Util.Core
+      Seal.Wallet.Kernel.Util.NonEmptyMap
+      Seal.Wallet.Kernel.Util.Strict
+      Seal.Wallet.Kernel.Util.StrictList
+      Seal.Wallet.Kernel.Util.StrictNonEmpty
+      Seal.Wallet.Kernel.Util.StrictStateT
+      Seal.Wallet.Kernel.Wallets
+      Seal.Wallet.Node.Client
+      Seal.Wallet.NodeProxy
+      Seal.Wallet.Server
+      Seal.Wallet.Server.CLI
+      Seal.Wallet.Server.Middlewares
+      Seal.Wallet.Server.Plugins
+      Seal.Wallet.Server.Plugins.AcidState
+      Seal.Wallet.TypeLits
+      Seal.Wallet.Types.UtxoStatistics
+      Seal.Wallet.Util
+      Seal.Wallet.WalletLayer
+      Seal.Wallet.WalletLayer.ExecutionTimeLimit
+      Seal.Wallet.WalletLayer.Kernel
+      Seal.Wallet.WalletLayer.Kernel.Accounts
+      Seal.Wallet.WalletLayer.Kernel.Active
+      Seal.Wallet.WalletLayer.Kernel.Addresses
+      Seal.Wallet.WalletLayer.Kernel.Conv
+      Seal.Wallet.WalletLayer.Kernel.Internal
+      Seal.Wallet.WalletLayer.Kernel.Transactions
+      Seal.Wallet.WalletLayer.Kernel.Wallets
+--   other-modules:
+--       Paths_cardano_wallet
+
+
+
+executable seal-wallet-server
+  default-language:
+      Haskell2010
+  default-extensions:
+      DataKinds
+      DefaultSignatures
+      FlexibleContexts
+      FlexibleInstances
+      MonadFailDesugaring
+      MultiParamTypeClasses
+      NoImplicitPrelude
+      OverloadedStrings
+      RecordWildCards
+      ScopedTypeVariables
+      TemplateHaskell
+      TypeApplications
+      TypeFamilies
+      TypeOperators
+      UndecidableInstances
+  ghc-options:
+      -threaded -rtsopts
+      -Wall
+      -O2
+
+  build-depends:
+      base
+    , seal
+    , seal-util
+    , seal-wallet
+    , universum
+
+  hs-source-dirs:
+      app/server
+  main-is:
+      Main.hs
+
+
+executable seal-wallet-generate-swagger
+  default-language:
+      Haskell2010
+  default-extensions:
+      FlexibleContexts
+      MonadFailDesugaring
+      NoImplicitPrelude
+      OverloadedStrings
+      RecordWildCards
+      ScopedTypeVariables
+      TypeApplications
+      TypeOperators
+  ghc-options:
+      -threaded -rtsopts
+      -Wall
+      -fno-warn-orphans
+      -O2
+
+  build-depends:
+      base
+    , aeson
+    , bytestring
+    , seal-chain
+    , seal-util
+    , seal-wallet
+    , optparse-applicative
+    , swagger2
+    , universum >= 0.1.11
+
+  hs-source-dirs:
+      app/generate-swagger
+  main-is:
+      Main.hs
+
+
+-- test-suite unit
+--   default-language:
+--       Haskell2010
+--   default-extensions:
+--       BangPatterns
+--       ConstraintKinds
+--       DataKinds
+--       DeriveGeneric
+--       FlexibleContexts
+--       FlexibleInstances
+--       GADTs
+--       InstanceSigs
+--       LambdaCase
+--       MultiParamTypeClasses
+--       MultiWayIf
+--       NoImplicitPrelude
+--       OverloadedStrings
+--       RankNTypes
+--       RecordWildCards
+--       ScopedTypeVariables
+--       StandaloneDeriving
+--       TemplateHaskell
+--       TypeApplications
+--       TypeFamilies
+--       TypeOperators
+--   other-extensions:
+--       DeriveAnyClass
+--       GeneralizedNewtypeDeriving
+--       UndecidableInstances
+--   ghc-options:
+--       -threaded -rtsopts
+--       -Wall
+--       -Werror
+--       -O2
+
+--   build-depends:
+--       base
+--     , acid-state
+--     , aeson
+--     , bytestring
+--     , seal-crypto
+--     , seal
+--     , seal-binary
+--     , seal-chain
+--     -- , seal-chain-test
+--     , seal-client
+--     , seal-core
+--     -- , seal-core-test
+--     , seal-crypto
+--     , seal-db
+--     , seal-infra
+--     , seal-mnemonic
+--     , seal-util
+--     , seal-util-test
+--     , seal-utxo
+--     -- , seal-wallet
+--     , cereal
+--     , conduit
+--     , containers
+--     , cryptonite
+--     , data-default
+--     , directory
+--     , formatting
+--     , hedgehog
+--     , hspec
+--     , hspec-core
+--     , insert-ordered-containers
+--     , lens
+--     , mtl
+--     , normaldistribution
+--     , QuickCheck
+--     , quickcheck-instances
+--     , random
+--     , safe-exceptions
+--     , safecopy
+--     , serokell-util
+--     , servant
+--     , servant-server
+--     , servant-swagger
+--     , string-conv
+--     , swagger2
+--     , tabl
+--     , text
+--     , time
+--     , time-units
+--     , universum
+--     , unordered-containers
+--     , vector
+
+--   type:
+--      exitcode-stdio-1.0
+--   hs-source-dirs:
+--       test/unit
+--   main-is:
+--       Main.hs
+--   other-modules:
+--       API.MarshallingSpec
+--       API.RequestSpec
+--       API.SwaggerSpec
+--       Arbitrary
+--       Golden.APILayout
+--       Golden.APIV1Types
+--       Golden.Ed25519Addresses
+--       Golden.WalletError
+--       Test.Infrastructure.Generator
+--       Test.Infrastructure.Genesis
+--       Test.Spec.Accounts
+--       Test.Spec.AddressPool
+--       Test.Spec.AddressPoolGap
+--       Test.Spec.Addresses
+--       Test.Spec.BlockMetaScenarios
+--       Test.Spec.CoinSelection
+--       Test.Spec.CoinSelection.Generators
+--       Test.Spec.DeltaCompression
+--       Test.Spec.Ed25519Bip44
+--       Test.Spec.Fixture
+--       Test.Spec.GetTransactions
+--       Test.Spec.Kernel
+--       Test.Spec.Keystore
+--       Test.Spec.Models
+--       Test.Spec.NewPayment
+--       Test.Spec.Submission
+--       Test.Spec.Translation
+--       Test.Spec.TxMetaScenarios
+--       Test.Spec.TxMetaStorage
+--       Test.Spec.WalletWorker
+--       Test.Spec.Wallets
+--       UTxO.ToCardano.Interpreter
+--       Util.Buildable
+--       Util.Buildable.Hspec
+--       Util.Buildable.QuickCheck
+--       Util.Prefiltering
+--       Wallet.Abstract
+--       Wallet.Basic
+--       Wallet.Incremental
+--       Wallet.Inductive
+--       Wallet.Inductive.Cardano
+--       Wallet.Inductive.ExtWalletEvent
+--       Wallet.Inductive.Generator
+--       Wallet.Inductive.History
+--       Wallet.Inductive.Interpreter
+--       Wallet.Inductive.Invariants
+--       Wallet.Inductive.Validation
+--       Wallet.Prefiltered
+--       Wallet.Rollback.Basic
+--       Wallet.Rollback.Full
+
+--       -- can be factored into a library later
+--       Servant.JsendCompliance
+
+
+-- test-suite nightly
+--   default-language:
+--       Haskell2010
+--   default-extensions:
+--       BangPatterns
+--       ConstraintKinds
+--       DataKinds
+--       DeriveGeneric
+--       FlexibleContexts
+--       FlexibleInstances
+--       GADTs
+--       InstanceSigs
+--       LambdaCase
+--       MultiParamTypeClasses
+--       MultiWayIf
+--       NoImplicitPrelude
+--       OverloadedStrings
+--       RankNTypes
+--       RecordWildCards
+--       ScopedTypeVariables
+--       StandaloneDeriving
+--       TemplateHaskell
+--       TypeApplications
+--       TypeFamilies
+--       TypeOperators
+--   ghc-options:
+--       -threaded -rtsopts
+--       -Wall
+--       -Werror
+--       -O2
+
+--   build-depends:
+--       base
+--     , async
+--     , seal-chain
+--     , seal-core
+--     -- , seal-wallet
+--     , formatting
+--     , hspec
+--     , hspec-core
+--     , QuickCheck
+--     , safe-exceptions
+--     , serokell-util
+--     , text
+--     , universum
+
+--   type:
+--      exitcode-stdio-1.0
+--   hs-source-dirs:
+--       test/nightly
+--   main-is:
+--       Main.hs
+--   other-modules:
+--       TxMetaStorage
+
+
+-- test-suite integration
+--   default-language:
+--       Haskell2010
+--   default-extensions:
+--       ConstraintKinds
+--       DataKinds
+--       DeriveGeneric
+--       DerivingStrategies
+--       FlexibleContexts
+--       FlexibleInstances
+--       GeneralizedNewtypeDeriving
+--       LambdaCase
+--       MultiParamTypeClasses
+--       NoImplicitPrelude
+--       NoMonomorphismRestriction
+--       OverloadedLabels
+--       OverloadedStrings
+--       QuasiQuotes
+--       ScopedTypeVariables
+--       TupleSections
+--       TypeApplications
+--       TypeFamilies
+--       TypeOperators
+--       UndecidableInstances
+--   ghc-options:
+--       -threaded -rtsopts
+--       -Wall
+--       -Werror
+--       -O2
+
+--   build-depends:
+--       base
+--     , QuickCheck
+--     , servant-client
+--     , aeson
+--     , aeson-qq
+--     , async
+--     , bytestring
+--     , seal
+--     , seal-chain
+--     , seal-client
+--     , seal-cluster
+--     , seal-core
+--     , seal-crypto
+--     , seal-mnemonic
+--     , seal-util
+--     -- , seal-wallet
+--     , containers
+--     , cryptonite
+--     , directory
+--     , data-default
+--     , filepath
+--     , formatting
+--     , generic-lens
+--     , hspec
+--     , hspec-core
+--     , hspec-expectations-lifted
+--     , http-api-data
+--     , http-client
+--     , http-types
+--     , memory
+--     , optparse-applicative
+--     , servant-client-core
+--     , template-haskell
+--     , text
+--     , universum
+
+--   type:
+--      exitcode-stdio-1.0
+--   hs-source-dirs:
+--       test/integration
+--   main-is:
+--       Main.hs
+--   other-modules:
+--       Test.Integration.Documentation
+--       Test.Integration.Framework.Cluster
+--       Test.Integration.Framework.DSL
+--       Test.Integration.Framework.Request
+--       Test.Integration.Framework.Scenario
+--       Test.Integration.Scenario.Accounts
+--       Test.Integration.Scenario.Addresses
+--       Test.Integration.Scenario.EosWallets
+--       Test.Integration.Scenario.Transactions
+--       Test.Integration.Scenario.Wallets
+--       Test.Integration.Scenario.Node

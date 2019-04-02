@@ -1,0 +1,59 @@
+resolver: ./seal.yaml
+packages:
+- .
+
+extra-deps:
+- git: http://114.55.30.96:7990/scm/seal2_0/seal-crypto-base.git
+  commit: b72b5a712b3131e676df8aa1ed1aeae43306ab6c  
+#   extra-dep: true
+- git: https://github.com/kadena-io/thyme.git    
+  commit: 6ee9fcb026ebdb49b810802a981d166680d867c9  
+  # extra-dep: true
+  
+
+- git: http://114.55.30.96:7990/scm/seal2_0/seal-fix.git
+  commit: 745d2cef0cc309a6998bd8bce14f87f8aeb20f25
+  subdirs:
+    # - acid-state-exts
+    - binary
+    - binary/test
+    - chain
+    - chain/test
+    - client
+    - contract
+    # - clusters
+    - core
+    - core/test
+    - crypto
+    - crypto/test
+    - db
+    - infra
+    - lib
+    - mnemonic
+    - mpt
+    - networking
+    - node
+    - node-ipc
+    # - pact
+    - rocksdb
+    - util
+    - util/test
+    - utxo
+    - x509
+
+- generic-lens-1.1.0.0
+- compactable-0.1.2.3
+- ed25519-donna-0.1.1
+- nibblestring-0.0.3
+- ghc-boot-th-8.6.1
+- megaparsec-6.5.0
+- neat-interpolation-0.3.2.1
+
+
+nix:
+  shell-file: nix/stack-shell.nix
+
+package-indices:
+  - name: Tsinghua
+    download-prefix: http://mirrors.tuna.tsinghua.edu.cn/hackage/package/
+    http: http://mirrors.tuna.tsinghua.edu.cn/hackage/01-index.tar.gz

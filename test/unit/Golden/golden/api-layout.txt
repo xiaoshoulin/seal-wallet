@@ -1,0 +1,78 @@
+/
+├─ addresses/
+│  ├─•
+│  ┆
+│  ├─•
+│  ┆
+│  ┆
+│  └─ <capture>/
+│     └─•
+├─ node-info/
+│  └─•
+├─ node-settings/
+│  └─•
+├─ transactions/
+│  ├─ certificates/
+│  │  └─•
+│  ├─ externally-signed/
+│  │  └─•
+│  ├─ fees/
+│  │  └─•
+│  ├─ unsigned/
+│  │  └─•
+│  ├─•
+│  ┆
+│  └─•
+└─ wallets/
+   ├─ <capture>/
+   │  └─ addresses/
+   │     └─•
+   ┆
+   ├─•
+   ┆
+   ├─•
+   ┆
+   ┆
+   ├─ <capture>/
+   │  ├─ password/
+   │  │  └─•
+   │  ├─ statistics/
+   │  │  └─ utxos/
+   │  │     └─•
+   │  ├─•
+   │  ┆
+   │  ├─•
+   │  ┆
+   │  └─•
+   ┆
+   ├─ externally-owned/
+   │  ├─•
+   │  ┆
+   │  ┆
+   │  ├─ <capture>/
+   │  │  ├─•
+   │  │  ┆
+   │  │  ├─•
+   │  │  ┆
+   │  │  └─•
+   │  ┆
+   │  └─•
+   ┆
+   └─ <capture>/
+      └─ accounts/
+         ├─ <capture>/
+         │  ├─•
+         │  ┆
+         │  └─•
+         ┆
+         ├─•
+         ┆
+         ├─•
+         ┆
+         ┆
+         └─ <capture>/
+            ├─ addresses/
+            │  └─•
+            ├─ amount/
+            │  └─•
+            └─•
