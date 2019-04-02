@@ -10,7 +10,7 @@ git:
 
 # Caching so the next build will be fast too.
 cache:
-  timeout: 1337
+  timeout: 1500
   directories:
   - $HOME/.stack
   - $HOME/.local
