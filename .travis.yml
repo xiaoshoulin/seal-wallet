@@ -60,7 +60,7 @@ stages:
 
 # Install foreign dependencies required by some modules below
 before_install:
-- export LTS=$(cat seal-sl.yaml | grep resolver) # Extract the LTS from the stack.yaml
+- export LTS=$(cat seal.yaml | grep resolver) # Extract the LTS from the stack.yaml
 
 # Rebuild only the snapshot. Note that, when triggered, job-concurrency should be limited
 # to 1 and we might have to re-play the build multiple times in case it couldn't build
@@ -85,7 +85,7 @@ snapshot-1: &snapshot-1
   - travis_retry curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
   # Building a subset of the snapshot, to be < 42 min build time; we strip away seal-sl and servant packages because they're long to build
-  - cat seal-wallet.cabal | grep -v seal-sl | grep -v servant > tmp.cabal && mv tmp.cabal seal-wallet.cabal
+  - cat seal-wallet.cabal | grep -v seal | grep -v servant > tmp.cabal && mv tmp.cabal seal-wallet.cabal
   - travis_wait 42 stack --no-terminal --install-ghc build seal-wallet:lib --only-snapshot -j1
 
 # Build out custom snapshot on top of the LTS. We separate this from the lts job to split
